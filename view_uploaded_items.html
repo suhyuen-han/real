@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>TOO MUCH STUFF MUSEUM - 업로드된 항목</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fffaf4;
+      padding: 2rem;
+    }
+    .product {
+      max-width: 600px;
+      margin: 5rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    p {
+      margin: 0.3rem 0;
+    }
+  <style>
+.return-button-wrapper {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.return-button-wrapper span {
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  line-height: 1;
+}
+
+.return-button {
+  width: 36px;
+  height: 36px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+/* 되돌아가기 버튼 스타일 추가 */
+.return-button-wrapper {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.return-button-wrapper span {
+  font-weight: 600;
+  font-size: 1rem;
+  color: black;
+  line-height: 1;
+}
+
+.return-button {
+  width: 36px;
+  height: 36px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+</style>
+</style>
+</head>
+<body>
+  <div class="product" id="productDisplay">
+    <h2>업로드된 항목</h2>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const item = JSON.parse(localStorage.getItem('uploadedItem'));
+    if (item) {
+      document.getElementById('output').innerHTML = `
+        <h3>${item.name}</h3>
+        <p><strong>가격:</strong> ${item.price}원</p>
+        <p><strong>설명:</strong> ${item.desc}</p>
+        <img src="${item.image}" alt="업로드된 이미지">
+      `;
+    } else {
+      document.getElementById('output').innerHTML = "<p>아직 업로드된 항목이 없어요!</p>";
+    }
+  </script>
+
+<div class="return-button-wrapper" onclick="window.location.href='upload.html'">
+  <div class="return-button">←</div>
+  <span>되돌아가기</span>
+</div>
+</body>
+
+</html>

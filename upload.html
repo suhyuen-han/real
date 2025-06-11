@@ -1,0 +1,396 @@
+
+<<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TOO MUCH STUFF MUSEUM</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 125vh;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: url('back.jpg') no-repeat center center fixed;
+      background-size: cover;
+     
+    }
+
+    .overlay {
+      background: rgba(255,255,255,0.2);
+      padding: 2rem;
+      width: 80%;
+      border-radius: 12px;
+      max-width: 800px;
+     margin-top: 600px;
+     margin-bottom: 300px;
+     margin-left: 50%;
+
+    }
+
+    .logo {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      color: white;
+      font-size: 7rem;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+  .explation {
+      position: absolute;
+      top: 600px;
+      left: 100px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+    .form-group {
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 12px;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: none;
+      background: rgba(255,255,255,0.6);
+     
+    }
+
+    input[type="file"] {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      
+    }
+
+    button {
+      margin-top: 1rem;
+      background: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      border-radius: 5px;
+    }
+
+    .upload-success {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.4s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .upload-success.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.05);
+      animation: pulse 0.8s ease;
+    }
+
+    @keyframes pulse {
+      0%   { transform: translate(-50%, -50%) scale(1.1); }
+      50%  { transform: translate(-50%, -50%) scale(0.95); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+    .button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 3rem;
+  margin-top: 0rem;
+  margin-bottom: 10rem;
+}
+
+.visit-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.visit-button:hover {
+  transform: scale(1.05); /* 전체가 살짝 커짐 */
+}
+
+.visit-text {
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+}
+
+.arrow-circle {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: black;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.arrow-circle:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.2); /* 원만 더 커짐 */
+}
+  
+<style>
+.input-wrapper {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
+}
+
+.input-wrapper input[type="text"],
+.input-wrapper input[type="file"],
+.input-wrapper textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.8);
+}
+
+.input-wrapper button {
+  background: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+@keyframes float-updown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px white; }
+  50% { text-shadow: 0 0 15px #ffffff; }
+  100% { text-shadow: 0 0 5px white; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* 둥둥 떠다니는 효과 */
+.visit-button {
+  animation: float-updown 2.5s ease-in-out infinite;
+}
+
+/
+
+/* 화살표 살짝 커졌다 작아지는 효과 */
+.arrow-circle {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+</style>
+
+</style>
+
+<style>
+.back-button {
+  position: absolute;
+  bottom: 80px;
+  left: 100px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+.back-button:hover {
+  transform: scale(1.1);
+}
+.back-button .arrow-circle {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+.back-button:hover .arrow-circle {
+  background-color: black;
+  color: white;
+}
+.back-button .visit-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+</style>
+<script>
+  function scrollToFirstPage() {
+    window.location.href = "index_footer_bottom_firstpage.html";
+  }
+</script>
+
+</head>
+<body>
+  <div class="logo">TOO MUCH<br>STUFF<br>MUSEUM</div>
+  <div class="explation">누군가에게는 쓸모없을 수 있지만,<br>
+    당신에게는 특별했던 소비의 순간을 공유해주세요.<br>
+    이미지와 함께 이름, 가격, 그리고 짧은 설명을 남겨주세요.
+  </div>
+
+  <div class="overlay">
+    <form id="uploadForm">
+      <input type="file" accept="image/*" />
+      <div class="form-group">
+        
+        <input type="text" placeholder="상품 이름:">
+      </div>
+      <div class="form-group">
+        
+        <input type="text" placeholder="가격:">
+      </div>
+      <div class="form-group">
+      
+        <textarea rows="3" placeholder="상품 설명:"></textarea>
+      </div>
+      <button type="submit">업로드하기</button>
+    </div>
+</form>
+  </div>
+  
+   <div class="upload-success" id="uploadSuccess">
+    업로드 완료!
+  </div>
+
+  
+  <script>
+    const form = document.getElementById('uploadForm');
+    const successBox = document.getElementById('uploadSuccess');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // 기본 제출 막기
+
+      // 입력값 가져오기
+      const imageInput = form.querySelector('input[type="file"]');
+      const nameInput = form.querySelector('input[placeholder="상품 이름:"]');
+      const priceInput = form.querySelector('input[placeholder="가격:"]');
+      const descInput = form.querySelector('textarea');
+
+      const reader = new FileReader();
+      reader.onload = function() {
+        const item = {
+          image: reader.result,
+          name: nameInput.value,
+          price: priceInput.value,
+          desc: descInput.value
+        };
+        localStorage.setItem('uploadedItem', JSON.stringify(item));
+
+        // 업로드 완료 메시지 표시
+        successBox.classList.add('show');
+        form.reset();
+
+        // 2.5초 후 메시지 숨기고 페이지 이동
+        setTimeout(() => {
+          successBox.classList.remove('show');
+          window.location.href = 'view_uploaded_items.html';
+        }, 2500);
+      };
+
+      if (imageInput.files.length > 0) {
+        reader.readAsDataURL(imageInput.files[0]);
+      }
+    });
+  </script>
+
+   <div class="button-wrapper">
+  <div class="visit-button">
+    <span class="visit-text">보러가기</span>
+    <div class="arrow-circle">→</div>
+  </div>
+</div>
+
+
+<script>
+  document.querySelector('.visit-button').addEventListener('click', function() {
+    window.location.href = 'view_uploaded_items.html';
+  });
+</script>
+
+
+<footer style="background: rgba(255,255,255,0.15); color: white; padding: 67px 10vw; display: flex; justify-content: space-between; flex-wrap: wrap; font-size: 0.8rem; font-family: Arial, sans-serif;">
+  <div style="font-weight: 900; line-height: 1.2; color: black; font-size: 1.7rem; margin-right: auto;">
+    TOO MUCH<br>
+    STUFF<br>
+    MUSEUM
+  </div>
+  <div style="line-height: 2; margin-left: 10vw; margin-right: 5vw;">
+    개인정보 처리방침<br>
+    웹 사이트 이용 약관<br>
+    고객 서비스<br>
+    고객 지원센터
+  </div>
+  <div style="line-height: 2; margin-right: 11vw;">
+    CONTACT<br>
+    @TOO STUFF MUSEUM<br>
+    010-1234-1234
+  </div>
+</footer>
+
+
+<div class="back-button" onclick="window.location.href='index.html#section1'">
+  <div class="arrow-circle">←</div>
+  <span class="visit-text">되돌아가기</span>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
